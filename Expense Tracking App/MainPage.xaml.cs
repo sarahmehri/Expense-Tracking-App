@@ -20,7 +20,7 @@ namespace Expense_Tracking_App
         {
            await Navigation.PushModalAsync(new AddMonthlyGoalPage
            {
-
+               //binding the context with expense class
                BindingContext = new Expense()
 
            });
