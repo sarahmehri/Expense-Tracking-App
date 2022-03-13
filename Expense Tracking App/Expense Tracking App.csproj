@@ -16,13 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AddMonthlyGoalPage.xaml.cs">
-      <DependentUpon>AddMonthlyGoalPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="AddMonthlyGoalPage.xaml">
+    <EmbeddedResource Update="AddExpensePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="AddMonthlyBudgetGoal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

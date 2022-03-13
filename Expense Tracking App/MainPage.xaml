@@ -1,12 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Expense_Tracking_App.MainPage">
+<ContentPage
+    x:Class="Expense_Tracking_App.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:Expense_Tracking_App.Models">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="MonthlyGoalAdded_Clicked"/>
+        <ToolbarItem Clicked="MonthlyGoalAdded_Clicked" Text="+" />
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <Button Text="Add Monthly Goal" Clicked="MonthlyGoalAdded_Clicked"/>
-    </StackLayout>
+        <StackLayout x:Name="AddGoal" IsVisible="false">
+            <Button Clicked="MonthlyGoalAdded_Clicked" Text="Add Monthly Goal" />
+        </StackLayout>
 
+        <StackLayout x:Name="GoalUpdate" IsVisible="false">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Goal:" />
+                <Label x:Name="GoalValue" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Balance:" />
+                <Label x:Name="BalanceValu" />
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout x:Name="AddExpense">
+            <Button
+                x:Name="AddExp"
+                Clicked="AddExp_Clicked"
+                Text="Add expense" />
+        </StackLayout>
+        <ListView
+            x:Name="ExpensesListView"
+            Margin="20"
+            ItemSelected="ExpensesListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Expense">
+                    <TextCell Detail="{Binding Date}" Text="{Binding Amount}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
