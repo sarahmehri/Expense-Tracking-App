@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Expense_Tracking_App.AddMonthlyGoalPage">
+             x:Class="Expense_Tracking_App.AddMonthlyBudgetGoal">
     <ContentPage.Content>
         <StackLayout>
-            <Editor x:Name="editor"
+            <Editor x:Name="BudgetEditor"
                     Placeholder="Enter your monthly goal"
                     HeightRequest="100"/>
 
@@ -12,12 +12,12 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    
+
                 </Grid.ColumnDefinitions>
-                <Button Text="Save"
-                        Clicked="SaveButton_Clicked"/>
-                <Button Text="Delete"
-                        Clicked="DeleteButton_Clicked"
+                <Button x:Name="OnSave" Text="Save"
+                        Clicked="OnSave_Clicked"/>
+                <Button Text="Delete" x:Name="OnDelete"
+                        Clicked="OnDelete_Clicked"
                         Grid.Column="1"/>
             </Grid>
         </StackLayout>
