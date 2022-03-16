@@ -18,7 +18,7 @@ namespace Expense_Tracking_App
         {
             InitializeComponent();
         }
-
+        
         protected override void OnAppearing()
         {
             var exp = (Expense)BindingContext;

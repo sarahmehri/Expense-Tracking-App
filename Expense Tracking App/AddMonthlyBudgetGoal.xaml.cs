@@ -46,7 +46,7 @@ namespace Expense_Tracking_App
             {
                 // TO DO: Add error message to the user to tell this is not legal decimal.
             }
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
             
 
         }
