@@ -21,9 +21,9 @@ namespace Expense_Tracking_App
 
         protected override void OnAppearing()
         {
-
-            var budgetFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.expense.txt");
+            var budgetFile = Directory.EnumerateFiles(Environment.GetFolderPath(
+                   Environment.SpecialFolder.LocalApplicationData), "*.budget.txt").FirstOrDefault();
+           
             if(File.Exists(budgetFile))
             {
                 AddGoal.IsVisible = false;
@@ -56,7 +56,7 @@ namespace Expense_Tracking_App
             {
 
                 AddGoal.IsVisible = true;
-                AddExp.IsVisible = true;
+                AddExp.IsVisible = false;
                 
             }
 
