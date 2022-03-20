@@ -17,6 +17,7 @@ namespace Expense_Tracking_App
         public AddExpensePage()
         {
             InitializeComponent();
+            
         }
         
         protected override void OnAppearing()
@@ -35,15 +36,30 @@ namespace Expense_Tracking_App
                 //Create new file
                 exp.FileName = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.{ExpenseName.Text}.expense.txt");
+                    $"{Path.GetRandomFileName()}.{ExpenseName.Text}.expStore.txt");
             }
+            exp.Name = ExpenseName.Text;
+            exp.Amount = Decimal.Parse(ExpenseAmount.Text);
+            
+
+
             File.WriteAllText(exp.FileName, ExpenseAmount.Text);
+           // File.AppendAllText(exp.FileName, ExpenseName.Text);
+            
+            
+            
             await Navigation.PopModalAsync();
         }
 
-        private void OnDelete_Clicked(object sender, EventArgs e)
+        private async void OnDelete_Clicked(object sender, EventArgs e)
         {
-            // to be don
+            var exp = (Expense)BindingContext;
+            if (File.Exists(exp.FileName))
+            {
+                File.Delete(exp.FileName);
+            }
+            ExpenseName.Text = string.Empty;
+            await Navigation.PopModalAsync();
         }
     }
 }

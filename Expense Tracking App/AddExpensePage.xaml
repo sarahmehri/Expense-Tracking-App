@@ -13,6 +13,9 @@
             <Editor x:Name="ExpenseAmount" 
                     Placeholder="Enter expense Amount"
                     HeightRequest="100"/>
+           
+
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

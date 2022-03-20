@@ -12,5 +12,7 @@ namespace Expense_Tracking_App.Models
         public string FileName { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
+        public string FullTitle => $"{Name} {Amount}";
+
     }
 }

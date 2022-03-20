@@ -33,11 +33,34 @@
             x:Name="ExpensesListView"
             Margin="20"
             ItemSelected="ExpensesListView_ItemSelected">
+            <!--
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Expense">
-                    <TextCell Detail="{Binding Date}" Text="{Binding Amount}" />
+                    <TextCell Text="{Binding Name}" Detail="{Binding Date}"  />
+                   
+
+                </DataTemplate>
+                
+            </ListView.ItemTemplate>
+            -->
+            
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Expense">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" >
+                           
+                            <Label Text="{Binding Date}"  />
+                            
+                            <Label Text="{Binding Amount}" 
+                                   TextColor="Red"/>
+                            <Label Text="{Binding Name}"  />
+                           
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+           
         </ListView>
+        
     </StackLayout>
 </ContentPage>

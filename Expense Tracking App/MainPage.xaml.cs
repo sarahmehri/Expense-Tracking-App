@@ -16,6 +16,8 @@ namespace Expense_Tracking_App
         public MainPage()
         {
             InitializeComponent();
+            
+           
 
         }
 
@@ -35,15 +37,29 @@ namespace Expense_Tracking_App
                 decimal totaexp = 0m;
                 var exps = new List<Expense>();
                 var files = Directory.EnumerateFiles(Environment.GetFolderPath(
-                        Environment.SpecialFolder.LocalApplicationData), "*.expense.txt");
+                        Environment.SpecialFolder.LocalApplicationData), "*.expStore.txt");
+                var expenseList = new List<string>();
+               
+               
                 foreach (var filename in files)
                 {
+
                     var exp = new Expense
                     {
+
+
                         Amount = Decimal.Parse(File.ReadAllText(filename)),
                         Date = File.GetCreationTime(filename),
-                        FileName = filename// this is path not file name.
+                        FileName = filename
+                        // this is path not file name.
+                       
+                        
+                       
+                      
+
+
                     };
+                    
                     exps.Add(exp);
                 }
                 exps.ForEach(e => totaexp = totaexp + e.Amount);
