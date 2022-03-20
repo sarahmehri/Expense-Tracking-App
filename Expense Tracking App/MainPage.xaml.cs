@@ -37,27 +37,22 @@ namespace Expense_Tracking_App
                 decimal totaexp = 0m;
                 var exps = new List<Expense>();
                 var files = Directory.EnumerateFiles(Environment.GetFolderPath(
-                        Environment.SpecialFolder.LocalApplicationData), "*.expStore.txt");
+                        Environment.SpecialFolder.LocalApplicationData), "*.exp.txt");
                 var expenseList = new List<string>();
                
                
                 foreach (var filename in files)
                 {
-
-                    var exp = new Expense
+                    var readFile = File.ReadAllText(filename).Split(','); ;
+                    var amount = readFile.First(a => Decimal.TryParse(a,out decimal t) == true);// decimal values
+                    var name = readFile.First(g => Decimal.TryParse(g, out decimal t) == false);// non decimal values
+                    var exp = new Expense()
                     {
-
-
-                        Amount = Decimal.Parse(File.ReadAllText(filename)),
+                        Amount = Decimal.Parse(amount),// the second one is amount
                         Date = File.GetCreationTime(filename),
-                        FileName = filename
+                        FileName = filename,
+                        Name = name,
                         // this is path not file name.
-                       
-                        
-                       
-                      
-
-
                     };
                     
                     exps.Add(exp);

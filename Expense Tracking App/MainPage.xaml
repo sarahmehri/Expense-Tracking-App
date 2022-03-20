@@ -48,13 +48,19 @@
                 <DataTemplate x:DataType="model:Expense">
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" >
-                           
-                            <Label Text="{Binding Date}"  />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                            
+                            <Label Text="{Binding Name}"  />
                             
                             <Label Text="{Binding Amount}" 
-                                   TextColor="Red"/>
-                            <Label Text="{Binding Name}"  />
-                           
+                                   TextColor="Red" Grid.Column="1"/>
+                            <Label Text="{Binding Date}"  Grid.Column="2" />
+                            </Grid>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

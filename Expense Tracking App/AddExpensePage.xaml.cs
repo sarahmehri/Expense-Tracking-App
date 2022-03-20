@@ -36,14 +36,12 @@ namespace Expense_Tracking_App
                 //Create new file
                 exp.FileName = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.{ExpenseName.Text}.expStore.txt");
+                    $"{Path.GetRandomFileName()}.{ExpenseName.Text}.exp.txt");
             }
-            exp.Name = ExpenseName.Text;
-            exp.Amount = Decimal.Parse(ExpenseAmount.Text);
-            
 
 
-            File.WriteAllText(exp.FileName, ExpenseAmount.Text);
+            var content = $"{ExpenseName.Text},{ExpenseAmount.Text}";
+            File.WriteAllText(exp.FileName, content);
            // File.AppendAllText(exp.FileName, ExpenseName.Text);
             
             
