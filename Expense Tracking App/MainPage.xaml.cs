@@ -46,13 +46,16 @@ namespace Expense_Tracking_App
                     var readFile = File.ReadAllText(filename).Split(','); ;
                     var amount = readFile.First(a => Decimal.TryParse(a,out decimal t) == true);// decimal values
                     var name = readFile.First(g => Decimal.TryParse(g, out decimal t) == false);// non decimal values
+                    if(name.Length>0)
+                    {
+
+                    }
                     var exp = new Expense()
                     {
                         Amount = Decimal.Parse(amount),// the second one is amount
                         Date = File.GetCreationTime(filename),
                         FileName = filename,
-                        Name = name,
-                        // this is path not file name.
+                        Name = name.Length > 1? char.ToUpper(name[0]) + name.Substring(1): name,// capitlized the first letter of  expense name;
                     };
                     
                     exps.Add(exp);
